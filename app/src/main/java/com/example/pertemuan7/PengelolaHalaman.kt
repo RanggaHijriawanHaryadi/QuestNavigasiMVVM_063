@@ -6,7 +6,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.pertemuan7.ui.viewmodel.MahasiswaViewModel
 
 enum class  Halaman {
     Formulir,

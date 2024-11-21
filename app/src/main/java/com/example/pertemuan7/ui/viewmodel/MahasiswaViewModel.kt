@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import model.DataMahasiswa
 
-data class MahasiswaViewModel: ViewModel(){
+class MahasiswaViewModel : ViewModel() {
     private val _uiStatae = MutableStateFlow(DataMahasiswa())
     val uiState: StateFlow<DataMahasiswa> = _uiStatae.asStateFlow()
 
@@ -16,8 +16,9 @@ data class MahasiswaViewModel: ViewModel(){
             dataMhs.copy(
                 nama = listDM[0],
                 gender = listDM [1],
-                alamat = listDM[2]
+                alamat = listDM[2],
+                NIM = listDM[3]
             )
+            }
         }
-    }
 }
