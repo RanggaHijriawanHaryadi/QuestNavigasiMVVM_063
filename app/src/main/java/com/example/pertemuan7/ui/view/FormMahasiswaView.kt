@@ -33,7 +33,7 @@ fun FormMahasiswaView(
     var nama by rememberSaveable { mutableStateOf("") }
     var gender by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
-    val NIM by remember { mutableStateOf("") }
+    var NIM by remember { mutableStateOf("") }
 
     val DataMahasiswa : MutableList<String> = mutableListOf(nama , gender, alamat, NIM)
 
@@ -69,6 +69,7 @@ fun FormMahasiswaView(
             placeholder = { Text("Masukkan Alamat") },
             modifier = Modifier.fillMaxWidth().padding(5.dp)
         )
+
         Button(onClick = { onSubmitClicked(DataMahasiswa)})
         { Text("Simpan") }
     }
