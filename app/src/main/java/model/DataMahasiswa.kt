@@ -5,4 +5,6 @@ data class DataMahasiswa(
     val gender: String = "",
     val alamat:String="",
     val NIM: String="",
+    val noTlpn: String="",
+    val email: String=""
     )

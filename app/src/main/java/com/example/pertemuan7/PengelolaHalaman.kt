@@ -1,4 +1,4 @@
-package com.example.pertemuan7
+package com.example.arsitektumvvm
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -8,33 +8,53 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.pertemuan7.ui.view.DetailMahasiswaView
 import com.example.pertemuan7.ui.view.FormMahasiswaView
 import com.example.pertemuan7.ui.viewmodel.MahasiswaViewModel
 import model.DataKelamin
 
-enum class  Halaman {
+enum class Halaman{
     Formulir,
     Detail,
 }
+
 @Composable
-fun PengelolaHalaman(
+fun PengelolaanHalaman(
     modifier: Modifier = Modifier,
-    navHost: NavController = rememberNavController(),
+    navHost: NavHostController = rememberNavController(),
     viewModel: MahasiswaViewModel = viewModel()
 ){
     Scaffold { isipadding ->
         val uiState by viewModel.uiState.collectAsState()
-        NavHost (
+        NavHost(
             modifier = modifier.padding(isipadding),
             navController = navHost, startDestination = Halaman.Formulir.name
-        ){
-
-
+        ) {
+            composable(route = Halaman.Formulir.name) {
+                val konteks = LocalContext.current
+                FormMahasiswaView(
+                    listJk = DataKelamin.listJK.map {
+                            isi -> konteks.resources.getString(isi)
+                    },
+                    onSubmitClicked = {
+                        viewModel.saveDataMahasiswa(it)
+                        navHost.navigate(Halaman.Detail.name)
+                    }
+                )
+            }
+            composable(route = Halaman.Detail.name){
+                DetailMahasiswaView(
+                    uiStateMahasiswa = uiState,
+                    onClickButton = {
+                        navHost.popBackStack()
+                    }
+                )
+            }
         }
     }
-
-}`
+}

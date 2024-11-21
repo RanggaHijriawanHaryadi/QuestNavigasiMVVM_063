@@ -3,9 +3,11 @@ package com.example.pertemuan7.ui.view
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,17 +28,19 @@ fun DetailMahasiswaView(
         Pair("NIM", uiStateMahasiswa.NIM)
     )
 
-    Column {
+    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
         listDataMahasiswa.forEach{items ->
             CardSection(
                 judulParam = items.first,
                 Isiparams  = items.second
             )
         }
+        Spacer(modifier=Modifier.padding(16.dp))
+        Button(onClick = {onClickButton()}) {
+            Text(text = "Kembali")
+        }
     }
-    Button(onClick = {onClickButton()}) {
-        Text(text = "Kembali")
-    }
+
 }
 @Composable
 fun CardSection(judulParam : String, Isiparams : String){
