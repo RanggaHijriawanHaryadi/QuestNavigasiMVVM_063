@@ -35,7 +35,7 @@ fun FormMahasiswaView(
     var alamat by remember { mutableStateOf("") }
     var NIM by remember { mutableStateOf("") }
 
-    val DataMahasiswa : MutableList<String> = mutableListOf(nama , gender, alamat, NIM)
+    val dataMahasiswa : MutableList<String> = mutableListOf(nama , gender, alamat, NIM)
 
     Column (
         Modifier.fillMaxSize().padding(16.dp),
@@ -77,25 +77,9 @@ fun FormMahasiswaView(
             modifier = Modifier.fillMaxWidth().padding(5.dp)
         )
 
-        Button(onClick = { onSubmitClicked(DataMahasiswa)})
+        Button(onClick = { onSubmitClicked(dataMahasiswa)})
         { Text("Simpan") }
     }
 
 }
-@Composable
-fun CardSection(judulParam : String, Isiparams : String){
-    Column(
-        horizontalAlignment = Alignment.Start
-    ) {
 
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(5.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(text = judulParam, modifier = Modifier.weight(0.8f))
-            Text(text = ":", modifier = Modifier.weight(0.2f))
-            Text(text = "$Isiparams", modifier = Modifier.weight(2f))
-            }
-
-        }
-}

@@ -1,13 +1,20 @@
 package com.example.pertemuan7
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.example.pertemuan7.ui.view.DetailMahasiswaView
+import com.example.pertemuan7.ui.view.FormMahasiswaView
 import com.example.pertemuan7.ui.viewmodel.MahasiswaViewModel
+import model.DataKelamin
 
 enum class  Halaman {
     Formulir,
@@ -16,17 +23,18 @@ enum class  Halaman {
 @Composable
 fun PengelolaHalaman(
     modifier: Modifier = Modifier,
-    navController: NavController = rememberNavController(),
-    viewmodel: MahasiswaViewModel = viewModel()
+    navHost: NavController = rememberNavController(),
+    viewModel: MahasiswaViewModel = viewModel()
 ){
-    val stateUi by view
-    NavHost(navController = navController, startDestination = Halaman.Formulir.name) {
-        composable(route = Halaman.Formulir.name)
-        val konteks = LocalContext.current
-        MainScren(
-            listJK = DataJenisKelamin.listJK.map{id->
-                konteks.resources.getString()
-            }
-        )
+    Scaffold { isipadding ->
+        val uiState by viewModel.uiState.collectAsState()
+        NavHost (
+            modifier = modifier.padding(isipadding),
+            navController = navHost, startDestination = Halaman.Formulir.name
+        ){
+
+
+        }
     }
+
 }`
