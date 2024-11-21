@@ -69,6 +69,13 @@ fun FormMahasiswaView(
             placeholder = { Text("Masukkan Alamat") },
             modifier = Modifier.fillMaxWidth().padding(5.dp)
         )
+        OutlinedTextField(
+            value = NIM,
+            onValueChange = {NIM = it},
+            label = { Text("NIM") },
+            placeholder = { Text("Masukkan NIM") },
+            modifier = Modifier.fillMaxWidth().padding(5.dp)
+        )
 
         Button(onClick = { onSubmitClicked(DataMahasiswa)})
         { Text("Simpan") }
