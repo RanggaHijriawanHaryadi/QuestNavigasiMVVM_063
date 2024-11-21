@@ -25,7 +25,9 @@ fun DetailMahasiswaView(
         Pair("Nama", uiStateMahasiswa.nama),
         Pair("gender", uiStateMahasiswa.gender),
         Pair("Alamat", uiStateMahasiswa.alamat),
-        Pair("NIM", uiStateMahasiswa.NIM)
+        Pair("NIM", uiStateMahasiswa.NIM),
+        Pair("noTlpn", uiStateMahasiswa.noTlpn),
+        Pair("Email", uiStateMahasiswa.email)
     )
 
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
